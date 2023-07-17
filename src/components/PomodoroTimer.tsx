@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import useSound from 'use-sound';
 import sfx from '../Assets/sound1.mp3'
 import '../App.css'
 
