@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import sfx from '../Assets/sound1.mp3'
+import sound1 from '../Assets/sound1.mp3'
+import sound2 from '../Assets/sound2.mp3'
 import '../App.css'
 
 export const PomodoroTimer: React.FC = () => {
@@ -13,7 +14,8 @@ export const PomodoroTimer: React.FC = () => {
   const [remainingTime, setRemainingTime] = useState<number>(workTime);
   const [isRunning, setIsRunning] = useState<boolean>(false);
   const [isWorking, setIsWorking] = useState<boolean>(true);
-  const audio = new Audio(sfx);
+  const audio1 = new Audio(sound1);
+  const audio2 = new Audio(sound2);
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
@@ -24,7 +26,7 @@ export const PomodoroTimer: React.FC = () => {
           if (prevTime > 0) {
             return prevTime - 1;
           } else {
-            audio.play();
+            audio1.play();
 
             if (isWorking) {
                 setIsWorking(false);
@@ -55,6 +57,7 @@ export const PomodoroTimer: React.FC = () => {
 
   const startTimer = () => {
     setIsRunning(true);
+    audio2.play();
   };
 
   const stopTimer = () => {
@@ -116,37 +119,39 @@ export const PomodoroTimer: React.FC = () => {
       </div>
 
       <div className="user-setting-wrapper">
-        <div className="setting-container">
-          <label htmlFor="work">Work Time</label>
-          <input
-            id="work"
-            className="setting"
-            type="number"
-            onChange={(e) => (handleWorkTimeChange(e))}
-            value={workTime/60}
-            disabled={isRunning ? true : false}
-          />
-        </div>
-        <div className="setting-container">
-          <label htmlFor="work">Break Time</label>
-          <input
-            className="setting  break"
-            type="number"
-            onChange={(e) => (handleBreakTimeChange(e))}
-            value={breakTime/60}
-            disabled={isRunning ? true : false}
-          />
-        </div>
+        <div style={{display: "flex", flexDirection: "row"}}>
+          <div className="setting-container">
+            <label htmlFor="work">Work Time</label>
+            <input
+              id="work"
+              className="setting"
+              type="number"
+              onChange={(e) => (handleWorkTimeChange(e))}
+              value={workTime/60}
+              disabled={isRunning ? true : false}
+            />
+          </div>
+          <div className="setting-container">
+            <label htmlFor="work">Break Time</label>
+            <input
+              className="setting  break"
+              type="number"
+              onChange={(e) => (handleBreakTimeChange(e))}
+              value={breakTime/60}
+              disabled={isRunning ? true : false}
+            />
+          </div>
 
-        <div className="setting-container">
-          <label htmlFor="work">Repeat</label>
-          <input
-            className="setting repeat"
-            type="number"
-            onChange={(e) => (handleCycleCountChange(e))}
-            value={cycleCount}
-            disabled={isRunning ? true : false}
-          />
+          <div className="setting-container">
+            <label htmlFor="work">Repeat</label>
+            <input
+              className="setting repeat"
+              type="number"
+              onChange={(e) => (handleCycleCountChange(e))}
+              value={cycleCount}
+              disabled={isRunning ? true : false}
+            />
+          </div>
         </div>
 
         <button
@@ -155,6 +160,12 @@ export const PomodoroTimer: React.FC = () => {
         >
           Reset
         </button>
+      </div>
+
+      <div className='description'>
+        Technology used:<br/>
+        &nbsp;&nbsp;Vite + TypeScript + React Hooks<br/>
+        &nbsp;&nbsp;CSS
       </div>
     </div>
   );

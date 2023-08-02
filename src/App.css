@@ -1,3 +1,8 @@
+#root {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
 h1 {
     font-size: 60px;
 }
@@ -15,7 +20,8 @@ p {
 }
 
 .timer {
-    width: 600px;
+    max-width: 600px;
+    min-width: 550px;
     height: 250px;
     padding: 20px;
     background-color: #fff;
@@ -43,9 +49,10 @@ p {
 }
 
 .user-setting-wrapper {
-    width: 100%;
-    margin: 20px;
+    width: 80%;
+    margin: 40px 20px 0;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
@@ -64,9 +71,32 @@ p {
     border: 2px solid #444;
     border-radius: 5px;
     font-size: 24px;
+    box-shadow: 0 3px 2px 0 #ccc;
+    transition: .2s all;
+}
+
+.button:hover{
+    transform: translateY(3px);
+    box-shadow: none;
 }
 
 .setting-container {
     display: flex;
     flex-direction: column;
+}
+
+.description{
+    width: 100%;
+    padding: 10px;
+    margin-top: 80px;
+    border-top: 2px solid #ccc;
+}
+@media screen and (max-width: 648px) {
+    .user-setting-wrapper {
+        width: 50%;
+        flex-direction: column;
+}
+    .button{
+        margin-top: 20px;
+    }
 }
