@@ -164,7 +164,7 @@ export const PomodoroTimer: React.FC = () => {
 
       <div className='description'>
         Technology used:<br/>
-        &nbsp;&nbsp;Vite + TypeScript + React Hooks<br/>
+        &nbsp;&nbsp;Vite + TypeScript<br/>
         &nbsp;&nbsp;CSS
       </div>
     </div>
