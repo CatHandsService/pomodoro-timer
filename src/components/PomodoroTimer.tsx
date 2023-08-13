@@ -109,8 +109,8 @@ export const PomodoroTimer: React.FC = () => {
           onClick={isRunning? stopTimer : startTimer}
         >
           <div className="statements">
-            <p>Cycle:　{currentCycle}</p>
-            <p>　{isWorking ? 'Work Time' : 'Break Time'}</p>
+            <p>Cycle:{currentCycle}</p>
+            <p>{isWorking ? 'Work Time' : 'Break Time'}</p>
           </div>
           <p>
             {`${formatTime(remainingTime)}`}
